@@ -1,82 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-        <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
+    <title>Checker</title>
 </head>
-        <title>Checker</title>
-    </head>
-    <body>
-        <nav class="navbar">
-            <div class="navdiv">
-                <img src="https://pbs.twimg.com/profile_images/1483368987794841600/19-GsUNo_400x400.jpg" class="logo_png">
-                <div class="logo barlow-medium"><a href="#">Social Sentinel</a></div>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about.html">About</a></li>
-                </ul>
-            </div>
-        </nav>
-        <div class="chat-container">
-            <div class="chat-box" id="chat-box"></div>
-            <input type="text" class="chat-input" id="chat-input" placeholder="Share your Feelings ...">
-            <button class="chat-button" id="chat-button" onclick="sendMessage()"></button>  
-            <script>
-                async function sendMessage() {
-             const chatBox = document.getElementById('chat-box');
-             const chatInput = document.getElementById('chat-input');
-             const sendButton = document.getElementById('chat-button');
-             const message = chatInput.value.trim();
-         
-             console.log("Button clicked, message:", message); // Debugging line
-         
-             if (!message) return;
-         
-             chatInput.disabled = true;
-             sendButton.disabled = true;
-         
-             const userMessage = document.createElement('div');
-             userMessage.textContent = message;
-             userMessage.classList.add('userprint');
-             chatBox.appendChild(userMessage);
-         
-             try {
-                 const response = await fetch('/send_message', {
-                     method: 'POST',
-                     headers: { 'Content-Type': 'application/json' },
-                     body: JSON.stringify({ message: message })
-                 });
-         
-                 const data = await response.json();
-                 if (response.ok) {
-                     const aiMessage = document.createElement('div');
-                     aiMessage.textContent = data.ai_message;
-                     aiMessage.classList.add('aiprint')
-                     chatBox.appendChild(aiMessage);
-                 } else {
-                     console.error("Error response:", data);
-                 }
-             } catch (error) {
-                 console.error("Error sending message:", error);
-             }
-         
-             chatInput.disabled = false;
-             sendButton.disabled = false;
-             chatInput.value = '';
-             chatBox.scrollTop = chatBox.scrollHeight;
-         }
-         
-                 document.getElementById('chat-input').addEventListener('keypress', function(event) {
-                     if (event.key === 'Enter') {
-                         event.preventDefault();
-                         sendMessage();
-                     }
-                 });
-                 
-             </script>
-         </div>
-        </body>
+<body>
+    <nav class="navbar">
+        <div class="navdiv">
+            <img src="https://pbs.twimg.com/profile_images/1483368987794841600/19-GsUNo_400x400.jpg" class="logo_png">
+            <div class="logo barlow-medium"><a href="#">Social Sentinel</a></div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="chat-container">
+        <h1 class = "center">Submit a Website URL for Scraping and Bias Checking</h1>
+        <form method="POST" action="{{ url_for('scrape_website') }}">
+            <input type="text" name="" placeholder="Enter website URL" required>
+            <input type="submit" value="Scrape and Check Bias">
+        </form>
 
+        {% if url %}
+            <h2>Scraping Results for: {{ url }}</h2>
+            <h3>Page Title: {{ page_title }}</h3>
+            <p>Content Preview (first 300 characters):</p>
+            <p>{{ page_content }}</p>
+
+            <h2>Bias Analysis:</h2>
+            <p>{{ bias_analysis }}</p>
+        {% endif %}
+    </div>
+</body>
+<script>
+    function sendMessage(){
+        console.log("form button pressed");
+    }
+</script>
 </html>

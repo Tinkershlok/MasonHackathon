@@ -82,6 +82,9 @@ li a{
     font-size: 50px;
 }
 
+.center {
+  text-align:center;
+}
 .hero-text {
   text-align:center;
   font-family: "Barlow", sans-serif;
@@ -97,17 +100,17 @@ li a{
 }
 .chat-container {
   width:400px;
-  
+  text-align:center;
   align-items: center;
-  justify-content: center;
+  
   align-content: center;
 }
 
 .chat-box {
   width:400px;
-  
+  text-align:center;
   align-items: center;
-  justify-content: center;
+
   align-content: center;
 }
 

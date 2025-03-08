@@ -1,18 +1,20 @@
-import os
-from dotenv import load_dotenv
-from google import genai
+# import os
+# from flask import Flask, request 
+# from dotenv import load_dotenv
+# from google import genai
 
-load_dotenv()
+# load_dotenv()
 
-client = genai.Client(
-    api_key="AIzaSyCM4uL_WXs76v7-cIFfuyrCY_OUhhkkY6A"
-    )
-response = client.models.generate_content(
-    model="gemini-2.0-flash", contents="What is Figma"
-)
+# user_input=request.json.get('chat-input')
 
-response
+# client = genai.Client(
+#     api_key="AIzaSyCM4uL_WXs76v7-cIFfuyrCY_OUhhkkY6A"
+#     )
+# response = client.models.generate_content(
+#      model="gemini-2.0-flash", contents = user_input
+#  )
 
-print(response.text)
+
+# print(response.text)
 
 
