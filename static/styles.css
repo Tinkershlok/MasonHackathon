@@ -83,6 +83,9 @@ li a{
 
 .left-align {
   text-align:left;
+  font-family: "Barlow", sans-serif;
+  font-weight: 500;
+  font-style: normal;
 }
 
 
