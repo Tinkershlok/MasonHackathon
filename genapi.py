@@ -5,17 +5,16 @@ import google.generativeai as genai
 
 load_dotenv()
 
-client=genai.Client(api_key=os.getenv('GEMINI_API_KEY'))
+genai.configure(api_key=['AIzaSyCM4uL_WXs76v7-cIFfuyrCY_OUhhkkY6A'])
+model = genai.GenerativeModel("gemini-pro")
+response = model.generate_content("what is Figma.")
+print(response.text)
 
-def factcheck(user_input):
-    global chat_history
-    
-    chat_history_str = "\n".join([f"{msg['role']}: {msg['content']}" for msg in chat_history])
-
-    response = client.models.generate_content(
-        model="gemini-2.0-flash",
-    )
-    output = response.text
-    return output
-
+"""
+client = genai.Client(api_key="AIzaSyCM4uL_WXs76v7-cIFfuyrCY_OUhhkkY6A")
+response = client.models.generate_content(
+    model="gemini-2.0-flash", contents="What is Figma"
+)
+print(response.text)
+"""
 

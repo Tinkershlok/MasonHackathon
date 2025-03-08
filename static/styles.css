@@ -1,6 +1,8 @@
 body{
     background-color:black;
     color:white;
+    background-image:url('https://media.istockphoto.com/id/1001279256/vector/technology-network-background.jpg?s=612x612&w=0&k=20&c=paF8I7sCkHbt2jHwRI1cpxUz2pX1F26SKl0XeugJEno=');
+    font-family: calibri;
 }
 h1{
     color:rgb(135, 135, 223);
@@ -9,13 +11,54 @@ h1{
 .brand-name {
     color:white;
 }
-   
+
+.bold {
+    font-family:calibri;
+    font-weight:bold;
+}
+
 p {
     color:white;
+    font-family:calibri;
 }
+
 *{
     text-decoration: none;
 }
+
+p1{
+    color:white;
+    font-family:calibri;
+}
+
 .navbar {
-    
+    background-color: black;
+    font-family: calibri;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.navdiv{
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+}
+.logo a {
+    font-size: 35px;
+    color: white;
+    font-weight: 600;
+}
+li{
+    list-style: none;
+    display: inline-block;
+}
+li a{
+    color:white;
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 25px;
+}
+.bold {
+    font-family:calibri;
+    font-weight:bold;
+    font-size: 50px;
 }

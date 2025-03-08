@@ -8,15 +8,19 @@
         
     </head>
     <body>
+        
         <nav class="navbar">
             <div class="navdiv">
-                <div class="logo"><a href="#"></a></div>
+                <div class="logo"><a href="#">SocialSentinel</a></div>
                 <ul>
-                    <li><a href="main.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
+                    <li><a href="{{ url_for('static', filename='about.html') }}">About</a></li>
+                    
                     <li><a href="newschecker.html">NewsChecker</a></li>
                 </ul>
             </div>
         </nav>
+        
+        <h1 >The new standard in </h1>
+        <h2 style="color:rgb(135, 135, 223)">Data Analysis</h2>
     </body>
 </html>
